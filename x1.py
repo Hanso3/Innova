@@ -1,4 +1,8 @@
-()
+from tkinter import *
+import tkinter as tk
+import csv
+
+window = Tk()
 window.title("Innova™")
 window.geometry("440x800")
 window.configure(background = "grey");
@@ -105,7 +109,7 @@ Label(window, text = "Village/City", bg = "grey", fg = "white", font = "none 12 
 Entry(window, textvariable = village, width = 20, fg = "blue", bd = 10, selectbackground = "violet").grid(row = 14, column = 2)
 
 Label(window, text = "Gender", bg ="grey", fg = "white", font = "none 12 bold").grid(row = 15, column = 2)
-tk.Radiobutton(window, text = "Male", bg = "grey", padx = 20, variable = gender, value = 1).grid(row = 16, column = 2)
+tk.Radiobutton(window, text = "Male   ", bg = "grey", padx = 20, variable = gender, value = 1).grid(row = 16, column = 2)
 tk.Radiobutton(window, text = "Female", bg = "grey", padx = 20, variable = gender, value = 2).grid(row = 17, column = 2)
 
 Label(window, text = "Does the patient smoke?", bg ="grey", fg = "white", font = "none 12 bold").grid(row = 15, column = 1)
@@ -154,5 +158,7 @@ tk.Radiobutton(window, text = "No", bg = "grey", padx = 20, variable = sickle_ce
 
 tk.Button(window, text = "Upload", fg = "White", bg = "dark green", height = 1, width = 10, command = upload).grid(row = 33, column = 1)
 window.mainloop()
+
+
 
 
