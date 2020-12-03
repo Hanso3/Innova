@@ -14,7 +14,7 @@ dni = tk.StringVar(window)
 phone = tk.StringVar(window)
 email = tk.StringVar(window)
 bmi = tk.StringVar(window)
-village = tk.StringVar(window)
+city = tk.StringVar(window)
 gender = tk.IntVar()
 smoker = tk.IntVar()
 asthma = tk.IntVar()
@@ -36,7 +36,7 @@ def upload():
     Phone = phone.get()
     Email = email.get()
     BMI = int(bmi.get())
-    Village = village.get()
+    City = city.get()
     Gender = gender.get()
     Smoker = smoker.get()
     Asthma = asthma.get()
@@ -68,13 +68,13 @@ def upload():
         
     Score = Sickle_cell_disease+Immunosuppressed+Talassemia+Hypertension+Diabetes+Pregnant+Chronic_pulmonary_disease+Chronic_renal_disease+Cancer+Asthma+Smoker+ValorBMI+ValorAge
 
-    pacient = [DNI, Score, Name, Date, Age, Phone, Email, BMI, Gender, Smoker, Asthma, Cancer, Chronic_renal_disease, Chronic_pulmonary_disease, Pregnant, Diabetes, Hypertension, Talassemia, Immunosuppressed, Sickle_cell_disease]
+    pacient = [DNI, Score, Name, Date, Age, Phone, Email, BMI, City, Gender, Smoker, Asthma, Cancer, Chronic_renal_disease, Chronic_pulmonary_disease, Pregnant, Diabetes, Hypertension, Talassemia, Immunosuppressed, Sickle_cell_disease]
     try:
         open("base.csv")
     except:
         with open("base.csv", "w", newline = "") as base:
             writer = csv.writer(base)
-            writer.writerow(["Name", "Date", "Age", "DNI", "Phone", "Email", "BMI", "Gender", "Smoker", "Asthma", "Cancer", "Chronic_renal_disease", "Chronic_pulmonary_disease", "Pregnant", "Diabetes", "Hypertension", "Talassemia", "Immunosuppressed", "Sickle_cell_disease", "Score"])
+            writer.writerow(["DNI", "Score", "Name", "Date", "Age", "Phone", "Email", "BMI", "City", "Gender", "Smoker", "Asthma", "Cancer", "Chronic_renal_disease", "Chronic_pulmonary_disease", "Pregnant", "Diabetes", "Hypertension", "Talassemia", "Immunosuppressed", "Sickle_cell_disease", "Score"])
             writer.writerow(pacient)
     else:
         with open("base.csv", "a", newline = "") as base:
@@ -83,6 +83,7 @@ def upload():
             base.close()
     finally:
          base.close()
+    window.destroy()
     
 Label(window, text = "Name", bg = "grey", fg = "white", font = "none 12 bold").grid(row = 1, column = 1)
 Entry(window, textvariable = name, width = 20, fg = "blue", bd = 10, selectbackground = "violet").grid(row = 2, column = 1)
@@ -105,8 +106,8 @@ Entry(window, textvariable = email, width = 20, fg = "blue", bd = 10, selectback
 Label(window, text = "BMI", bg = "grey", fg = "white", font = "none 12 bold").grid(row = 13, column = 1)
 Entry(window, textvariable = bmi, width = 20, fg = "blue", bd = 10, selectbackground = "violet").grid(row = 14, column = 1)
 
-Label(window, text = "Village/City", bg = "grey", fg = "white", font = "none 12 bold").grid(row = 13, column = 2)
-Entry(window, textvariable = village, width = 20, fg = "blue", bd = 10, selectbackground = "violet").grid(row = 14, column = 2)
+Label(window, text = "City", bg = "grey", fg = "white", font = "none 12 bold").grid(row = 13, column = 2)
+Entry(window, textvariable = city, width = 20, fg = "blue", bd = 10, selectbackground = "violet").grid(row = 14, column = 2)
 
 Label(window, text = "Gender", bg ="grey", fg = "white", font = "none 12 bold").grid(row = 15, column = 2)
 tk.Radiobutton(window, text = "Male   ", bg = "grey", padx = 20, variable = gender, value = 1).grid(row = 16, column = 2)
@@ -156,9 +157,6 @@ Label(window ,text = "Sickle Cell Disease", bg = "grey", fg = "white", font = "n
 tk.Radiobutton(window, text = "Yes", bg = "grey", padx = 20, variable = sickle_cell_disease, value = 1).grid(row = 31, column = 1)
 tk.Radiobutton(window, text = "No", bg = "grey", padx = 20, variable = sickle_cell_disease, value = 0).grid(row = 32, column = 1)
 
-tk.Button(window, text = "Upload", fg = "White", bg = "dark green", height = 1, width = 10, command = upload).grid(row = 33, column = 1)
+Label(window, text = "", bg = "grey", fg = "white", font = "none 12 bold").grid(row = 33, column = 1)
+tk.Button(window, text = "Upload and Close", fg = "White", bg = "dark green", height = 1, width = 16, command = upload).grid(row = 34, column = 1)
 window.mainloop()
-
-
-
-
